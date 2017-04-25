@@ -41,4 +41,7 @@ Route::get('crear','PagesController@pruebaRutas');
 Route::get('crear/{id}/{slug?}','PagesController@rutaDinamica')->where('id','[0-9]+');
 
 //ruta post para crear un ticket
-Route::post('create','TicketsController@create');
+//Route::post('create','TicketsController@create');
+
+
+Route::post('create','TicketsController@store');
