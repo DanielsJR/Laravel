@@ -21,7 +21,6 @@ class TicketsController extends Controller
     }
 
 
-
     /**
      * Show the form for creating a new resource.
      *
@@ -30,15 +29,8 @@ class TicketsController extends Controller
 
     public function create(TicketFormRequest $request)
     {
-           //return view('tickets.create');
 
-         
-          $ticket = new Ticket;
-          $ticket->title =$request->input('title');
-          $ticket->content =$request->input('content'); 
-
-          $ticket->save();
-           return view('tickets.created',compact('ticket'));
+           //return view('tickets.created',compact('ticket'));
            //dd($ticket->title,$ticket->content);
 
     }
@@ -52,7 +44,14 @@ class TicketsController extends Controller
      */
     public function store(TicketFormRequest $request)
     {
-        return $request->all();
+        $slug = uniqid();
+        $ticket = new Ticket(array(
+            'title' => $request->get('title'),
+            'content' => $request->get('content'),
+            'slug' =>$slug 
+            )); 
+        $ticket->save();
+        return redirect('/create')->with('status' , 'Ticket creado!!. Su id es: '.$slug); 
     }
 
     /**

@@ -33,8 +33,10 @@ Route::get('/','PagesController@home');
 Route::get('contact','PagesController@contact');
 Route::get('about','PagesController@about');
 Route::get('create','TicketsController@index');
+
 Route::get('mostrarUsuarios','UsuariosController@showUrs');
 Route::get('mostrarNombre','PagesController@mostrarNombre');
+
 Route::get('crear','PagesController@pruebaRutas');
 
 //ruta dinamica con parametros
@@ -43,5 +45,5 @@ Route::get('crear/{id}/{slug?}','PagesController@rutaDinamica')->where('id','[0-
 //ruta post para crear un ticket
 //Route::post('create','TicketsController@create');
 
-
+//guarda un ticket en la BD
 Route::post('create','TicketsController@store');

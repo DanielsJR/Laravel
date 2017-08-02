@@ -1,6 +1,6 @@
 <?php
 
-/* lo chante en el model factory!!!!!!!!!!!!!!!!!!!!!!!!!!
+ 
 //model factory para llenar la tabla pruebas
 $factory->define(App\Prueba::class, function (Faker\Generator $faker) {
     
@@ -11,4 +11,3 @@ $factory->define(App\Prueba::class, function (Faker\Generator $faker) {
     ];
 });
 
-*/

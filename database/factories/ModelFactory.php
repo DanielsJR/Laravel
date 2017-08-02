@@ -12,6 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+//factory para llenar la tabla usuarios
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
@@ -20,20 +21,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
-    ];
-});
-
-
-
-
-
-//factory para llenar la tabla pruebas
-$factory->define(App\Prueba::class, function (Faker\Generator $faker) {
-    
-    return [
-        'campo1' => $faker->name,
-        'campo2' => $faker->unique()->safeEmail,
-        
     ];
 });
 

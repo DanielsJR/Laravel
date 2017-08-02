@@ -26,9 +26,6 @@ class PagesController extends Controller
 
 
 
-
-
-
 public function mostrarNombre(){
 
         $users = User::nombre()->get();

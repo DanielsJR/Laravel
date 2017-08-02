@@ -1,5 +1,4 @@
 
-
 <nav class="navbar navbar-default">
         <div class="container">
           <div class="navbar-header">
@@ -19,16 +18,18 @@
               <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="/contact">Contact</a></li>
               
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CRUD <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CRUD 
+                <span class="caret"></span>
+                </a>
                 <ul class="dropdown-menu">
                  <li class="dropdown-header">Ticket</li>
                   <li><a href="/create">Crear</a></li>
                   <li><a href="/">Actualizar</a>
                   <li><a href="/">Borrar</a></li>
-                
                 </ul>
               </li>
+              
             </ul>
           </div><!--/.nav-collapse -->
         </div>
-      </nav>
+</nav>
