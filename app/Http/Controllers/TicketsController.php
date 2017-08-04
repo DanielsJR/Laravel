@@ -17,7 +17,8 @@ class TicketsController extends Controller
      */
     public function index()
     {
-        return view('tickets.create');
+        $tickets = Ticket::all();
+        return view('tickets.index',compact('tickets'));
     }
 
 
@@ -27,11 +28,10 @@ class TicketsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function create(TicketFormRequest $request)
+    public function create()
     {
 
-           //return view('tickets.created',compact('ticket'));
-           //dd($ticket->title,$ticket->content);
+        return view('tickets.create');
 
     }
 
@@ -60,9 +60,11 @@ class TicketsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        //$slug="59838c27675e1";
+        $ticket = Ticket::whereSlug($slug)->firstOrFail();
+        return view('tickets.show',compact('ticket'));
     }
 
     /**

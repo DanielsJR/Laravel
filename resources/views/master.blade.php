@@ -7,21 +7,18 @@
 
     <title> @yield('title') </title>
 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Material Design fonts -->
+    <!-- Material Design fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
-           <!-- Fonts -->
-   <!-- <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">-->
-               <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <!--<link href="css/bootstrap-theme.min.css" rel="stylesheet">-->
-
 
     <!-- Bootstrap Material Design -->
     <link rel ="stylesheet" type="text/css" href="/css/bootstrap-material-design.css">
-    <link rel ="stylesheet" type="text/css" href="/css/ripples.min.css">
+    <link href="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/css/material-wfont.min.css" rel="stylesheet">
+    <link href="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/css/ripples.min.css" rel="stylesheet">
+    <link href="/css/jquery.dropdown.css" rel="stylesheet">
+
     <!-- navbarStyle -->
     <link rel ="stylesheet" type="text/css" href="/css/navBar.css">
 
@@ -32,32 +29,36 @@
     @include('shared.navbar')
    
        <div class="flex-center position-ref full-height">
-            <div class="content">
+            <div>
               @yield('content')         
-                <div class="links">
-                  <a href="/">Home</a>
-                  <a href="/about">About</a>
-                  <a href="/contact">Contact</a>
-                </div>
             </div>
         </div>
 
         <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/docs.min.js"></script>
+
+   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     
-<!-- material design -->
-    <script src="/js/ripples.min.js"></script>
-    <script src="/js/material.min.js"></script>
+   <!-- bootstrap CDN Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <!-- bootstrap material design -->
+    
+    <script src="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/js/material.min.js"></script>
+    <script src="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/js/ripples.min.js"></script>
+    <script src="/js/jquery.dropdown.js"></script>
     <script>
-        $(document).ready(function() {
-        // Este comando es usado para inicializar algunos elementos y hacerlos funcionar de modo apropiado
-          $.material.init();
-       });
+      $.material.init();
+
+      $(document).ready(function() {
+        $("#s1").dropdown({"optionClass": "withripple"});
+      });
     </script>
+   
+
+
 
     </body>
 </html>
