@@ -8,6 +8,10 @@ class Ticket extends Model
 {
 
 	 protected $fillable = ['title','content','slug','status','user_id'];
+
+	     function comments(){
+    	return $this->hasMany('App\Comment','post_id');
+    }
   
 }
 

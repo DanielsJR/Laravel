@@ -4,6 +4,12 @@
 
 <div class="title m-b-md" >Tickets</div>
 
+@if (session ('status'))
+<div class="alert alert-success">
+    {{session('status')}}
+</div>
+@endif
+
 @if($tickets->isEmpty())
 <p>No hay Tickets</p>
 @else
@@ -13,7 +19,6 @@
         <tr>
             <th>ID</th>
             <th>Titulo</th>
-            <th>Content</th>
             <th>Status</th>
         </tr>
     </thead>
@@ -21,8 +26,7 @@
     @foreach ($tickets as $ticket)
         <tr>
             <td>{{ $ticket->id }}</td>
-            <td>{{ $ticket->title }}</td>
-            <td>{{ $ticket->content }}</td>
+            <td><a href="{!! action('TicketsController@show', $ticket->slug) !!}">{{ $ticket->title }}</a></td>
             <td><span class="badge">{{ $ticket->status ? 'Pendiente':'Respondido'}}</span></td>
         </tr>
     @endforeach

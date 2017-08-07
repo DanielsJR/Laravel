@@ -22,8 +22,6 @@
                 <ul class="dropdown-menu">
                  <li class="dropdown-header">Ticket</li>
                   <li><a href="/create">Crear</a></li>
-                  <li><a href="/">Actualizar</a></li>
-                  <li><a href="/">Borrar</a></li>
                   <li><a href="/tickets">Mostrar Todos</a></li>
                 </ul>
               </li>

@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
          //$this->call(TerribleSeeder::class);
 
             //con el factory model
-    	 factory(App\User::class, 40)->create();
-    	 factory(App\Prueba::class, 40)->create();
-    	 factory(App\Ticket::class, 40)->create();
+    	 factory(App\User::class, 10)->create();
+    	 factory(App\Prueba::class, 10)->create();
+    	 factory(App\Ticket::class, 10)->create();
     }
 }

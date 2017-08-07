@@ -29,14 +29,14 @@
                     <div class="form-group">
                         <label for="content" class="col-lg-2 control-label">Contenido</label>
                         <div class="col-lg-10">
-                            <textarea class="form-control" rows="3" id="content" name="content"></textarea>
+                            <textarea class="form-control" rows="3" id="content" placeholder="Contenido" name="content"></textarea>
                             <span class="help-block">Envia un ticket para dudas y consultas.</span>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                            <button class="btn btn-default">Cancelar</button>
+                            <button type="reset"class="btn btn-default">Cancelar</button>
                             <button type="submit" class="btn btn-primary" onclick="" >Enviar</button>
                         </div>
                     </div>

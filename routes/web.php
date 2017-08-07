@@ -12,26 +12,6 @@
 |
 */
 
-
-/*Route::get('/', function(){
-	return view('welcome');
-	});
-*/
-
-/*
-use App\User;
-Route::get('pruebasUser', function(){
-
-	$users = User::all();
-    dd($users);
-
-});
-*/
-
-//Route::get('/','HomeController@home');
-
-
-
 Route::get('mostrarUsuarios','UsuariosController@showUrs');
 Route::get('mostrarNombre','PagesController@mostrarNombre');
 
@@ -59,3 +39,15 @@ Route::get('/tickets','TicketsController@index');
 
 //muestra un ticket
 Route::get('/ticket/{slug?}','TicketsController@show');
+
+//edita un ticket
+Route::get('/ticket/{slug?}/edit','TicketsController@edit');
+
+//borra un ticket
+Route::post('/ticket/{slug?}/edit','TicketsController@update');
+
+//borra un ticket
+Route::post('/ticket/{slug?}/delete','TicketsController@destroy');
+
+//crea un comentario
+Route::post('/comment','CommentsController@newComment');

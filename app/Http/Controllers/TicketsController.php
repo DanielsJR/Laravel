@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Ticket;
-
+use Illuminate\Support\Facades\MaiL;
 use App\Http\Requests\TicketFormRequest;
 
 class TicketsController extends Controller
@@ -18,7 +18,7 @@ class TicketsController extends Controller
     public function index()
     {
         $tickets = Ticket::all();
-        return view('tickets.index',compact('tickets'));
+        return view('/tickets.index',compact('tickets'));
     }
 
 
@@ -31,7 +31,7 @@ class TicketsController extends Controller
     public function create()
     {
 
-        return view('tickets.create');
+        return view('/tickets.create');
 
     }
 
@@ -51,6 +51,14 @@ class TicketsController extends Controller
             'slug' =>$slug 
             )); 
         $ticket->save();
+
+      //mail
+        $data = array('ticket' => $slug);
+        Mail::send('emails.ticket', $data, function($message){
+          $message->from('d.rubio81@gmail.com','Curso Larabel');
+          $message->to('d.rubio81@gmail.com')->subject('Hay un nuevo Ticket!!');
+});
+
         return redirect('/create')->with('status' , 'Ticket creado!!. Su id es: '.$slug); 
     }
 
@@ -64,7 +72,8 @@ class TicketsController extends Controller
     {
         //$slug="59838c27675e1";
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
-        return view('tickets.show',compact('ticket'));
+        $comments = $ticket->comments()->get();
+        return view('/tickets.show',compact('ticket','comments'));
     }
 
     /**
@@ -73,9 +82,10 @@ class TicketsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+         $ticket = Ticket::whereSlug($slug)->firstOrFail();
+        return view('/tickets.edit',compact('ticket'));
     }
 
     /**
@@ -85,9 +95,14 @@ class TicketsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TicketFormRequest $request, $slug)
     {
-        //
+        $ticket = Ticket::whereSlug($slug)->firstOrFail();
+        $ticket->title = $request->get('title');
+        $ticket->content = $request->get('content');
+        $ticket->status = $request->get('status',1);
+        $ticket->update();
+        return redirect('/tickets')->with('status','El ticket '.$slug.' ha sido Actualizado!!');
     }
 
     /**
@@ -96,8 +111,10 @@ class TicketsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        $ticket = Ticket::whereSlug($slug)->firstOrFail();
+        $ticket->delete();
+        return redirect('/tickets')->with('status','El ticket '.$slug.' ha sido Destruido!!');
     }
 }
